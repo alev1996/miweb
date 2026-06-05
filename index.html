@@ -18,11 +18,10 @@
         h1 {
             color: #4CAF50;
             margin-top: 120px;
-            animation: aparecer 1.5s ease-out;
         }
 
         p {
-            animation: aparecer 2s ease-out;
+            opacity: 0.9;
         }
 
         button {
@@ -40,26 +39,14 @@
             background-color: #45a049;
         }
 
-        /* Animación de entrada */
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ❤️ Corazones flotando */
+        /* ❤️ Corazones */
         .heart {
             position: absolute;
             bottom: -50px;
             color: #ff4d6d;
             font-size: 20px;
-            animation: subir 6s linear infinite;
-            opacity: 0.7;
+            animation: subir 6s linear forwards;
+            opacity: 0.8;
         }
 
         @keyframes subir {
@@ -87,12 +74,32 @@
     Haz clic aquí
 </button>
 
-<!-- Corazones -->
-<div class="heart" style="left:10%; animation-duration:5s;">❤️</div>
-<div class="heart" style="left:25%; animation-duration:7s;">❤️</div>
-<div class="heart" style="left:40%; animation-duration:6s;">❤️</div>
-<div class="heart" style="left:60%; animation-duration:8s;">❤️</div>
-<div class="heart" style="left:80%; animation-duration:5.5s;">❤️</div>
+<script>
+    function crearCorazon() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+
+        // posición aleatoria
+        heart.style.left = Math.random() * 100 + "vw";
+
+        // tamaño aleatorio
+        heart.style.fontSize = (16 + Math.random() * 20) + "px";
+
+        // duración aleatoria
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        // eliminar después de la animación
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    // crear corazones cada 300ms
+    setInterval(crearCorazon, 300);
+</script>
 
 </body>
 </html>

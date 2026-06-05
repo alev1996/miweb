@@ -7,16 +7,17 @@
 
     <style>
         body {
+            margin: 0;
             background-color: #1e1e1e;
             color: white;
             font-family: Arial;
             text-align: center;
-            padding-top: 100px;
+            overflow: hidden;
         }
 
-        /* Animación del título */
         h1 {
             color: #4CAF50;
+            margin-top: 120px;
             animation: aparecer 1.5s ease-out;
         }
 
@@ -24,7 +25,6 @@
             animation: aparecer 2s ease-out;
         }
 
-        /* Botón */
         button {
             padding: 12px 24px;
             font-size: 16px;
@@ -33,14 +33,11 @@
             color: white;
             cursor: pointer;
             border-radius: 8px;
-
-            /* animación de pulso */
-            animation: pulse 2s infinite;
+            margin-top: 20px;
         }
 
         button:hover {
             background-color: #45a049;
-            transform: scale(1.05);
         }
 
         /* Animación de entrada */
@@ -55,19 +52,27 @@
             }
         }
 
-        /* Animación de latido */
-        @keyframes pulse {
+        /* ❤️ Corazones flotando */
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: subir 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes subir {
             0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.5);
+                transform: translateY(0) scale(1);
+                opacity: 0;
             }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+            20% {
+                opacity: 1;
             }
             100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+                transform: translateY(-110vh) scale(1.5);
+                opacity: 0;
             }
         }
     </style>
@@ -81,6 +86,13 @@
 <button onclick="alert('¡Hola Dai ❤️!')">
     Haz clic aquí
 </button>
+
+<!-- Corazones -->
+<div class="heart" style="left:10%; animation-duration:5s;">❤️</div>
+<div class="heart" style="left:25%; animation-duration:7s;">❤️</div>
+<div class="heart" style="left:40%; animation-duration:6s;">❤️</div>
+<div class="heart" style="left:60%; animation-duration:8s;">❤️</div>
+<div class="heart" style="left:80%; animation-duration:5.5s;">❤️</div>
 
 </body>
 </html>

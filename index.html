@@ -3,101 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primera web</title>
+    <title>Carta para Dai ❤️</title>
 
     <style>
         body {
             margin: 0;
-            background-color: #1e1e1e;
-            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0b1020, #2b0f1a);
             font-family: Arial;
-            text-align: center;
             overflow: hidden;
+            color: white;
+        }
+
+        /* 💌 Contenedor de la carta */
+        .carta {
+            width: 300px;
+            height: 200px;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carta:hover {
+            transform: scale(1.05);
+        }
+
+        /* Parte interior (mensaje) */
+        .mensaje {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: aparecer 1s ease forwards;
+        }
+
+        .abierta .mensaje {
+            display: flex;
+        }
+
+        .abierta .inicio {
+            display: none;
+        }
+
+        @keyframes aparecer {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
         }
 
         h1 {
-            color: #4CAF50;
-            margin-top: 120px;
+            margin: 0;
+            color: #e91e63;
         }
 
         p {
-            opacity: 0.9;
-        }
-
-        button {
-            padding: 12px 24px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        button:hover {
-            background-color: #45a049;
+            margin-top: 10px;
         }
 
         /* ❤️ Corazones */
         .heart {
             position: absolute;
             bottom: -50px;
-            color: #ff4d6d;
             font-size: 20px;
+            color: #ff4d6d;
             animation: subir 6s linear forwards;
             opacity: 0.8;
         }
 
         @keyframes subir {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-110vh) scale(1.5);
-                opacity: 0;
-            }
+            0% {transform: translateY(0); opacity: 0;}
+            20% {opacity: 1;}
+            100% {transform: translateY(-110vh); opacity: 0;}
         }
+
     </style>
 </head>
 
 <body>
 
-<h1>Dai te amo ❤️</h1>
-<p>Esta página es para ti</p>
+<div class="carta" onclick="abrirCarta(this)">
+    
+    <div class="inicio">
+        💌 Haz clic para abrir la carta
+    </div>
 
-<button onclick="alert('¡Hola Dai ❤️!')">
-    Haz clic aquí
-</button>
+    <div class="mensaje">
+        <h1>Dai ❤️</h1>
+        <p>Te amo mucho.<br>Esta página es para ti 💖</p>
+        <p>Gracias por ser parte de mi vida ✨</p>
+    </div>
+
+</div>
 
 <script>
+    // 💌 abrir carta
+    function abrirCarta(carta) {
+        carta.classList.add("abierta");
+    }
+
+    // ❤️ corazones infinitos
     function crearCorazon() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerText = "❤️";
 
-        // posición aleatoria
         heart.style.left = Math.random() * 100 + "vw";
-
-        // tamaño aleatorio
         heart.style.fontSize = (16 + Math.random() * 20) + "px";
-
-        // duración aleatoria
         heart.style.animationDuration = (4 + Math.random() * 3) + "s";
 
         document.body.appendChild(heart);
 
-        // eliminar después de la animación
         setTimeout(() => {
             heart.remove();
         }, 7000);
     }
 
-    // crear corazones cada 300ms
     setInterval(crearCorazon, 300);
 </script>
 
